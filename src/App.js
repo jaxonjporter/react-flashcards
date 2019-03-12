@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import CardContent from "./CardContent";
+import Cards from "./Cards.js";
+import {Col, Container, Row} from "react-bootstrap";
 import './App.css';
 
 class App extends Component {
+  state = {
+    cards: [
+      {id: 1, front: "Computer", back: "A dumb brick", },
+      {id: 2, front: "Phone", back: "Also dumb brick", },
+      {id: 3, front: "Watch", back: "Still a dumb brick", },
+      {id: 4, front: "Brick", back: "A brick", }
+    ],
+    newCard: { id: "", front: "", back: "" }
+  }
+
+  displayCard = (id) => {
+    const display = this.state.cards.filter( card => {
+      if (card.id === id){
+        this.setState({ newCard: card })
+      }
+    })
+  }
+
+
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <h1>FlashCard List will go here</h1>
+            <Cards cardList={this.state.cards} displayCard={this.displayCard} />
+          </Col>
+          <Col>
+            <h1>FlashCards will go here</h1>
+            <CardContent cardInfo={this.state.newCard} />
+          </Col>
+        </Row>
+        
+      </Container>
     );
   }
 }
