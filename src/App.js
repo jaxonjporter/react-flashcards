@@ -15,13 +15,24 @@ class App extends Component {
     newCard: { id: "", front: "", back: "" }
   }
 
+
   displayCard = (id) => {
-    const display = this.state.cards.filter( card => {
+    this.state.cards.filter( card => {
       if (card.id === id){
         this.setState({ newCard: card })
       }
+      return card
     })
   }
+
+  deleteCard = (id) => {
+    const curds = this.state.cards.filter( card => {
+    if (card.id !== id){
+      return card
+    }
+  })
+  this.setState({ cards: curds, })
+}
 
 
 
@@ -30,11 +41,11 @@ class App extends Component {
       <Container>
         <Row>
           <Col>
-            <h1>FlashCard List will go here</h1>
-            <Cards cardList={this.state.cards} displayCard={this.displayCard} />
+            <h1>FlashCards</h1>
+            <Cards cardList={this.state.cards} deleteCard={this.deleteCard} displayCard={this.displayCard} />
           </Col>
           <Col>
-            <h1>FlashCards will go here</h1>
+            <h1>Card</h1>
             <CardContent cardInfo={this.state.newCard} />
           </Col>
         </Row>
