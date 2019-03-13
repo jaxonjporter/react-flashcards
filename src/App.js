@@ -33,7 +33,6 @@ class App extends Component {
 
   addCard = (card) => {
     let newsCard = { id: this.getId(), ...card,}
-    debugger
     this.setState({ cards: [...this.state.cards, newsCard] })
   }
 
