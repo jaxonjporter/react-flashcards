@@ -5,7 +5,7 @@ import "./App.css"
 
 const Cards = ({ cardList, displayCard, deleteCard, }) => ( 
 
-  <ListGroup style={{maxWidth: "400px", }}>{
+  <ListGroup style={{maxWidth: "400px", }} className="shadow">{
       cardList.map( card => (<Card key={card.id} {...card} deleteCard={deleteCard} displayCard={displayCard}/>))
       }
   </ListGroup>
