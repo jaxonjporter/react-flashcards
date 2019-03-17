@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card.js"
 import { ListGroup } from "react-bootstrap"
-import "./App.css"
+import "../../App.css"
 
 const Cards = ({ cardList, displayCard, deleteCard, }) => ( 
 
